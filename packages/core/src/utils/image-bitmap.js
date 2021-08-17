@@ -162,7 +162,7 @@ export function parseBitmap(data, path, cb) {
     const mime = this.getMIME();
 
     if (this.constructor.decoders[mime]) {
-      this.bitmap = this.constructor.decoders[mime](data);
+      this.bitmap = this.constructor.decoders[mime](data, { maxMemoryUsageInMB: 2000 });
     } else {
       return throwError.call(this, 'Unsupported MIME type: ' + mime, cb);
     }
